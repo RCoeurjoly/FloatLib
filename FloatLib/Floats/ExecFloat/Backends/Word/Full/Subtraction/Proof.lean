@@ -521,7 +521,9 @@ private theorem addComponents_same_equal
       exact addDyadic_oppositeSign_sameExponent_eq_zero
         false true mantissa (Int.ofNat exponent - 1075)
         (by decide)]
-  rfl
+  calc
+    _ = Model.posZero FloatFormat.binary64 := by rfl
+    _ = packExactDifference false 0 (UInt64.ofNat exponent) := by rfl
 
 private theorem addComponents_same_large_right
     (small large exponent : Nat)
